@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('EventCtrl',
-    function EventController($scope, eventData, $log, $anchorScroll) {
+    function EventController($scope, eventData, $log, $anchorScroll, $routeParams) {
         $scope.sortOrder = 'name';
 
         // eventData.getEvent().then(function success(response) {
@@ -10,7 +10,7 @@ app.controller('EventCtrl',
         //     $log.warn('Something went wrong loading events...', response);
         // });
         
-        $scope.event = eventData.getEvent();
+        $scope.event = eventData.getEvent($routeParams.eventId);
 
         $scope.upVoteSession = function (session) {
             session.upVoteCount++;
